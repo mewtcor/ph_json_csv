@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
         header = list(set(header))
         # header.sort()
-        pprint.pprint(processed_data[0])
+        # pprint.pprint(processed_data[0])
         # print(node)
 
         with open(csv_file_path, 'w+') as f:
