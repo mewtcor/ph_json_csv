@@ -100,10 +100,10 @@ if __name__ == "__main__":
         pprint.pprint(processed_data[0])
         # print(node)
 
-        # with open(csv_file_path, 'w+') as f:
-        #     writer = csv.DictWriter(f, header, quoting=csv.QUOTE_ALL)
-        #     writer.writeheader()
-        #     for row in processed_data:
-        #         writer.writerow(row)
+        with open(csv_file_path, 'w+') as f:
+            writer = csv.DictWriter(f, header, quoting=csv.QUOTE_ALL)
+            writer.writeheader()
+            for row in processed_data:
+                writer.writerow(row)
 
         print ("Just completed writing csv file with %d columns" % len(header))
