@@ -72,13 +72,18 @@ if __name__ == "__main__":
         with io.open(json_file_path, 'r', encoding='utf-8-sig') as fp:
             json_value = fp.read()
             raw_data = json.loads(json_value)
-        
-        node = list(raw_data)[-1]
+        prefix1 = 'page'
+        prefix2 = 'data'
+        if prefix1 in raw_data:
+            node = prefix1
+        elif prefix2 in raw_data:
+            node = prefix2
+        # node = list(raw_data.keys())[-1]
 
         try:
             data_to_be_processed = raw_data[node]
         except:
-            data_to_be_processed = raw_data
+            data_to_be_proscessed = raw_data
 
         processed_data = []
         header = []
@@ -92,12 +97,13 @@ if __name__ == "__main__":
 
         header = list(set(header))
         # header.sort()
-        # pprint.pprint(processed_data[0])
+        pprint.pprint(processed_data[0])
+        # print(node)
 
-        with open(csv_file_path, 'w+') as f:
-            writer = csv.DictWriter(f, header, quoting=csv.QUOTE_ALL)
-            writer.writeheader()
-            for row in processed_data:
-                writer.writerow(row)
+        # with open(csv_file_path, 'w+') as f:
+        #     writer = csv.DictWriter(f, header, quoting=csv.QUOTE_ALL)
+        #     writer.writeheader()
+        #     for row in processed_data:
+        #         writer.writerow(row)
 
         print ("Just completed writing csv file with %d columns" % len(header))
